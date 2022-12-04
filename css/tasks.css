@@ -3,8 +3,11 @@
     background: var(--light);
     border-radius: var(--radius) var(--radius) 0 0;
     border: none;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    -webkit-box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     padding: 1.5rem;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
     transition: .2s;
 }
 
@@ -27,20 +30,31 @@
 }
 
 .tasks-container .task-filter-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding:1rem 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
     background: var(--light-gray);
     background: var(--color-variant-gray);
     border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .tasks-container .task-filter-container .filters-task {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: 1.5rem;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .tasks-container .task-filter-container .filters-task li {
@@ -73,6 +87,8 @@
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
     transition: .3s;
 }
 
@@ -82,8 +98,13 @@
 
 .tasks-container .tasks {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 1.5rem;
     overflow-y: auto;
     height: 47rem;
@@ -104,9 +125,15 @@
   
 
 .tasks-container .tasks .task {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 1.5rem 3rem;
     border-radius: var(--radius);
     background: #000;
@@ -116,8 +143,12 @@
 .tasks-container .tasks .task .right {
     font-size: 1.8rem;
     font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .tasks-container .tasks .task .left {
@@ -138,7 +169,9 @@
 }
   
 .tasks-container .tasks .task .left input[type="checkbox"]:checked::before {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
 }
 
 .tasks-container .tasks .task .right {
@@ -148,6 +181,8 @@
 .tasks-container .tasks .task .right .task-icon {
     color: var(--light);
     cursor: pointer;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
     transition: .2s;
 }
 
@@ -168,16 +203,31 @@
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height:100%;
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(-300rem);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transform: translateX(-300rem);
+        -ms-transform: translateX(-300rem);
+            transform: translateX(-300rem);
+    -webkit-transition: .2s;
+    -o-transition: .2s;
     transition: .2s;
 }
 
 .modal-edit.open {
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0);
 }
 
 .modal-edit .modal-edit-content {
@@ -189,10 +239,17 @@
 
 .modal-edit .modal-edit-content form {
     min-width: 26rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: 1rem;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .modal-edit .modal-edit-content form > * {
@@ -205,7 +262,8 @@
 
 .modal-edit .modal-edit-content form input:focus {
     outline: none;
-    box-shadow: var(--shadow);
+    -webkit-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
 }
 
 .modal-edit .modal-edit-content form button {
@@ -213,11 +271,14 @@
     cursor: pointer;
     background: #000;
     color: var(--light);
+    -webkit-transition: .2s;
+    -o-transition: .2s;
     transition: .2s;
 }
 
 .modal-edit .modal-edit-content form button:hover {
-    box-shadow: var(--shadow);
+    -webkit-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
 }
 
 @media(max-width:767px) {
