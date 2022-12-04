@@ -1,0 +1,237 @@
+.tasks-container .input-add-task {
+    width: 100%;
+    background: var(--light);
+    border-radius: var(--radius) var(--radius) 0 0;
+    border: none;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    padding: 1.5rem;
+    transition: .2s;
+}
+
+.tasks-container .invalid-input-task {
+    display: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--danger);
+    margin-bottom: 1rem;
+}
+
+.tasks-container .invalid-input-task.active {
+    display: block;
+}
+
+.tasks-container .input-add-task:focus {
+    outline: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.tasks-container .task-filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1rem 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    background: var(--light-gray);
+    background: var(--color-variant-gray);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.tasks-container .task-filter-container .filters-task {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.tasks-container .task-filter-container .filters-task li {
+    font-size: 1.6rem;
+    border-radius: var(--radius);
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.tasks-container .task-filter-container .filters-task li a {
+    color: var(--color-variant-1);
+}
+
+.tasks-container .task-filter-container .filters-task li.active,
+.tasks-container .task-filter-container .filters-task li:hover {
+    background: var(--primary);
+}
+
+.tasks-container .task-filter-container .filters-task li.active a,
+.tasks-container .task-filter-container .filters-task li:hover a {
+    color: var(--light);
+}
+
+.tasks-container .task-filter-container .submit-task {
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    color: var(--light);
+    font-weight: 700;
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.tasks-container .task-filter-container .submit-task:hover {
+    background: var(--primary-hover);
+}
+
+.tasks-container .tasks {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    height: 47rem;
+}
+
+.tasks-container .tasks::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.tasks-container .tasks::-webkit-scrollbar-track {
+    background: var(--gray);
+}
+
+.tasks-container .tasks::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    max-height: 1rem;
+}
+  
+
+.tasks-container .tasks .task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    border-radius: var(--radius);
+    background: #000;
+}
+
+.tasks-container .tasks .task .left,
+.tasks-container .tasks .task .right {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.tasks-container .tasks .task .left {
+    gap: 2rem;
+    color: var(--light);
+}
+
+.tasks-container .tasks .task .left input[type="checkbox"] {
+    all: unset;
+    padding: 1rem;
+    display: block;
+    border: 1px solid var(--gray);
+    border-radius: 50%;
+}
+  
+.tasks-container .tasks .task .left input[type="checkbox"]:checked  {
+    background: var(--primary);
+}
+  
+.tasks-container .tasks .task .left input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.tasks-container .tasks .task .right {
+    gap: 3rem;
+}
+
+.tasks-container .tasks .task .right .task-icon {
+    color: var(--light);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.tasks-container .tasks .task .right .task-icon.task-edit:hover {
+    color: var(--primary);
+}
+
+.tasks-container .tasks .task .right .task-icon.task-delete:hover {
+    color: var(--danger);
+}
+
+/* Modal */
+.modal-edit {
+    position:fixed;
+    z-index: 999;
+    top:0;
+    left:0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-300rem);
+    transition: .2s;
+}
+
+.modal-edit.open {
+    transform: translateX(0);
+}
+
+.modal-edit .modal-edit-content {
+    padding: 2rem 3rem;
+    border-radius: var(--radius);
+    background: var(--primary);
+    margin: 0 1rem;
+}
+
+.modal-edit .modal-edit-content form {
+    min-width: 26rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-edit .modal-edit-content form > * {
+    font-size: 1.6rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius);
+    border:none;
+}
+
+.modal-edit .modal-edit-content form input:focus {
+    outline: none;
+    box-shadow: var(--shadow);
+}
+
+.modal-edit .modal-edit-content form button {
+    font-weight: 600;
+    cursor: pointer;
+    background: #000;
+    color: var(--light);
+    transition: .2s;
+}
+
+.modal-edit .modal-edit-content form button:hover {
+    box-shadow: var(--shadow);
+}
+
+@media(max-width:767px) {
+    .tasks-container .tasks {
+        height: 26rem;
+    }
+
+    .tasks-container .tasks .task .left {
+        font-size: 1.6rem;
+    }
+}
+
+@media(max-width:320px) {
+    .tasks-container .task-filter-container .submit-task {
+        font-size: 1.6rem;
+    }
+}

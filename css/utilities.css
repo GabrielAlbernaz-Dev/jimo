@@ -1,0 +1,32 @@
+.pdx-5 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.pdx-4 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.pdy-1 {
+    padding-top:1.5rem;
+    padding-bottom:1rem;
+}
+
+.pdy-3 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+
+.pd-4 {
+    padding: 4rem;
+}
+
+.mt-5 {
+    margin-top: 5.5rem;
+}
+
+.text-done {
+    text-decoration: line-through;
+    text-decoration-thickness: .2rem;
+}

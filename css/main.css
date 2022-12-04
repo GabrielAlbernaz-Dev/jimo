@@ -1,0 +1,182 @@
+#app {
+    display: flex;
+    height: calc(100vh - 54px);
+    transition: .3s;
+}
+
+#app.side-disabled aside.side-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#app.side-disabled aside.side-nav .nav li a p {
+    display: none;
+}
+
+#app.side-disabled .task-wrapper {
+    flex: 30;
+}
+
+#app aside.side-nav .toggle-nav {
+    font-size: 3rem;
+    color: var(--color-variant-2);
+    margin-bottom: 4.5rem;
+    cursor: pointer;
+}
+
+#app aside.side-nav {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--color-variant-1);
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    transition: .3s;
+    flex: 1;
+}
+
+
+#app aside.side-nav .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+#app aside.side-nav .nav li a {
+    font-size: 2rem;
+    color: var(--color-variant-2);
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    text-align: left;
+    padding: 1rem;
+    border-radius: var(--radius) 0 var(--radius) 0 ;
+    transition: .2s;
+}
+
+#app aside.side-nav .nav li a.active,
+#app aside.side-nav .nav li a:hover {
+    background: var(--primary);
+}
+
+#app aside.side-nav .nav li a .nav-icon {
+    color: var(--color-variant-2);
+}
+
+#app .task-wrapper {
+    flex: 8;
+    padding: 4rem;
+}
+
+#app .task-wrapper .header-tasks {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#app .task-wrapper .info {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-size: 3.4rem;
+    color: var(--color-variant-2);
+}
+
+#app .task-wrapper .info .info-text {
+    font-weight: 600;
+}
+
+#app .task-wrapper .date {
+    margin-top: 1rem;
+}
+
+#app .task-wrapper .filters {
+    display: flex;
+    gap: 4rem;
+    font-weight: 700;
+    align-items: center;
+}
+
+#app .task-wrapper .filters a {
+    font-size: 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: var(--light);
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+#app .task-wrapper .filters a:hover {
+    background: var(--primary-hover);
+}
+
+#app .task-wrapper .date h2 {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+@media(max-width:767px) {
+    #app {
+        position: relative;
+        flex-direction: column;
+    }
+
+    #app aside.side-nav .toggle-nav {
+        display: none;
+    }
+
+    #app aside.side-nav {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        max-height: 8rem;
+        display: flex;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    }
+
+    #app aside.side-nav .nav li a p {
+        display: none;
+    }
+    
+
+    #app aside.side-nav .nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+    }   
+}
+
+@media(max-width:480px) {
+    html {
+        font-size: 58%
+    }
+
+    #app .task-wrapper .filters {
+        gap: 2rem;
+    }
+
+    #app .task-wrapper .filters a p {
+        display: none;
+    }
+}
+
+@media(max-width:320px) {
+    html {
+        font-size: 55%;
+    }
+
+    #app .task-wrapper {
+        padding: 3rem;
+    }
+
+    #app .task-wrapper .info {
+        font-size: 3rem;
+    }
+    
+}

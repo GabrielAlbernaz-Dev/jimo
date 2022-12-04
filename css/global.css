@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type:none;
+}
+
+html {
+    font-size: 62.5%;
+    --primary: #8257e5;
+    --primary-darker: #28203e;
+    --primary-hover: #9466ff;
+    --bg-variant:#faf9f8;
+    --color-variant-1:#fff;
+    --color-variant-2:#000;
+    --color-variant-gray:#222;
+    --light:#fff;
+    --light-gray:#eee;
+    --gray:#ccc;
+    --radius:8px;
+    --title:3.2rem;
+    --text:1.8rem;
+    --shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    --danger:#D50000;
+    --success:#00E676;
+}
+
+html.dark {
+    --bg-variant:#222;
+    --color-variant-1:#000;
+    --color-variant-2:#fff;
+    --color-variant-gray:#eee;
+}
+
+body {
+    background-color: var(--bg-variant);
+    min-height: 100vh;
+    font-family: 'Noto Sans', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.container {
+    max-width: 118rem;
+    margin: 0 auto;
+}
+
+.xdebug-var-dump {
+    font-size: 20px;
+}

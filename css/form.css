@@ -1,0 +1,235 @@
+.form-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: calc(100vh - 54px)
+}
+
+.form-container .content {
+    width: 100%;
+    height: 100%;   
+    display: -ms-grid;   
+    display: grid;
+    -ms-grid-columns: 1fr 4rem 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.form-container .content .desc {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 1rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    height: 100%;
+    background: var(--primary);
+}
+
+.form-container .content .desc .desc-title {
+    font-size: 6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--light);
+}
+
+.form-container .content .desc .desc-text {
+    font-size: 2.4rem;
+    color: var(--color-variant-2);
+}
+
+.form-container .content .main-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 1rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.form-container .content .main-form form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 2rem;
+    min-width: 50rem;
+}
+
+.form-container .content .main-form form .form-title {
+    font-size: 3.5rem;
+    color: var(--color-variant-2);
+}
+
+.form-container .content .main-form form .box-invalid {
+    display: none;
+    width: 100%;
+    font-size: 1.6rem;
+    -webkit-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
+    background: var(--danger);
+    color: var(--color-variant-2);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.form-container .content .main-form form .box-invalid.active {
+    display: block;
+}
+
+.form-container .content .main-form form .validate-msg {
+    display: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+    color: var(--danger);   
+    padding: .6rem 1rem;
+}
+
+.form-container .content .main-form form .validate-msg.active {
+    display: block;
+}
+
+.form-container .content .main-form form input,
+.form-container .content .main-form form .main-form-submit {
+    font-size: 2rem;
+    width: 100%;
+    border: none;
+    padding: 2rem;
+    border-radius: var(--radius);
+    -webkit-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
+    -webkit-transition: .3s ease-in;
+    -o-transition: .3s ease-in;
+    transition: .3s ease-in;
+}
+
+.form-container .content .main-form form input.invalid {
+    border: 2px solid var(--danger);
+}
+
+.form-container .content .main-form form input:focus {
+    outline:none;
+    border: 1px solid var(--primary);
+}
+
+.form-container .content .main-form form input:focus::-webkit-input-placeholder {
+    -webkit-transform: translateY(-.8rem);
+            transform: translateY(-.8rem);
+}
+
+.form-container .content .main-form form input:focus::-moz-placeholder {
+    transform: translateY(-.8rem);
+}
+
+.form-container .content .main-form form input:focus:-ms-input-placeholder {
+    -ms-transform: translateY(-.8rem);
+        transform: translateY(-.8rem);
+}
+
+.form-container .content .main-form form input:focus::-ms-input-placeholder {
+    -ms-transform: translateY(-.8rem);
+        transform: translateY(-.8rem);
+}
+
+.form-container .content .main-form form input:focus::placeholder {
+    -webkit-transform: translateY(-.8rem);
+        -ms-transform: translateY(-.8rem);
+            transform: translateY(-.8rem);
+}
+
+.form-container .content .main-form form .main-form-submit {
+    font-weight: 700;
+    color: var(--light);
+    background: var(--primary);
+    cursor: pointer;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.form-container .content .main-form form .main-form-submit:hover {
+    background: var(--primary-hover);
+}
+
+.form-container .content .main-form form a.forgot-password {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    color: var(--color-variant-2);
+    text-decoration: underline;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.form-container .content .main-form form a.forgot-password:hover {
+    color: var(--primary);
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+
+    .form-container .content {
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .form-container .content .desc .desc-title {
+        font-size: 5rem;
+    }
+
+    .form-container .content .desc .desc-text {
+        font-size: 1.8rem;
+    }
+
+    .form-container .content .main-form form .form-title {
+        font-size: 2.8rem;
+    }
+
+    .form-container .content .main-form form input {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width:520px) {
+    .form-container .content .main-form form {
+        min-width: 35rem;
+    }
+
+    .form-container .content .main-form form .box-invalid {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .form-container .content .main-form form {
+        min-width: 28rem;
+    }
+}

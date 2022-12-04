@@ -1,0 +1,280 @@
+header.main-header {
+    background: var(--primary);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+header.main-header.no-auth {
+    background: var(--color-variant-2);
+}
+
+header.main-header .logo {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--light);
+}
+
+header.main-header.no-auth .logo {
+    color: var(--color-variant-1);
+}
+
+header.main-header .search-todo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 40vw;
+}
+
+header.main-header .search-todo .search-todo-input,
+header.main-header .search-todo .search-todo-button {
+    border: none;
+    padding: 1rem;
+    font-size: 1.6rem;
+}
+
+header.main-header .search-todo .search-todo-input {
+    border-radius: var(--radius) 0 0 var(--radius);
+    width: 80%;
+}
+
+header.main-header .search-todo .search-todo-input:focus {
+    outline: none;
+    box-shadow: var(--shadow);
+}
+
+header.main-header .search-todo .search-todo-button {
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--color-variant-2);
+    color: var(--color-variant-1);
+    cursor: pointer;
+    transition: .3s;
+}
+
+header.main-header .search-todo .search-todo-button:hover {
+    color: var(--primary);
+}
+
+/* Form Btns */
+header.main-header .form-btn {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: .8rem;
+    border-radius: var(--radius);
+    color: var(--color-variant-1);
+    transition: .3s;
+}
+
+header.main-header .form-btn:hover {
+    text-decoration: underline;
+}
+
+header.main-header .form-btn.signup {
+    background: var(--primary);
+    color: var(--light);
+}
+
+header.main-header .form-btn.signup:hover {
+    background: var(--primary-hover);
+    text-decoration: none;
+    box-shadow: var(--shadow);
+}
+
+header.main-header .header-items {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+header.main-header .header-items .switch {
+    position: relative;
+    display: inline-block;
+    width: 6rem;
+    height: 3.4rem;
+    transform: scale(.9);
+}
+  
+
+header.main-header .header-items .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+
+header.main-header .header-items .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+header.main-header .header-items .slider:before {
+    position: absolute;
+    content: "";
+    height: 2.6rem;
+    width: 2.6rem;
+    left: .4rem;
+    bottom: .4rem;
+    background-color: var(--light);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+header.main-header .header-items input:checked + .slider {
+    background-color: var(--color-variant-1);
+}
+
+header.main-header.no-auth .header-items input:checked + .slider {
+    background-color: var(--primary);
+}
+
+header.main-header .header-items input:focus + .slider {
+    box-shadow: 0 0 1px var(--color-variant-1);
+}
+
+header.main-header .header-items input:checked + .slider:before {
+    -webkit-transform: translateX(2.6rem);
+    -ms-transform: translateX(2.6rem);
+    transform: translateX(2.6rem);
+}
+
+header.main-header .header-items .slider.round {
+    border-radius: 3.4rem;
+}
+
+header.main-header .header-items .slider.round:before {
+    border-radius: 50%;
+}
+
+header.main-header .header-items .profile {
+    position: relative;
+    flex: 2;
+    font-size: 3rem;
+    color: var(--color-variant-1);
+    cursor: pointer;
+}
+
+header.main-header .header-items .profile .dropdown-profile {
+    display: none;
+    position: absolute;
+    left: -2rem;
+    top: 100%;
+    min-width: 10rem;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    background: var(--color-variant-1);
+    display: flex;
+    justify-content: center;
+    border-radius: var(--radius);
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 2rem;
+    transition: .3s;
+}
+
+header.main-header .header-items .profile .dropdown-profile.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+header.main-header .header-items .profile .dropdown-profile a {
+    font-size: 1.6rem;
+    color: var(--color-variant-2);
+    transition: .3s;
+}
+
+header.main-header .header-items .profile .dropdown-profile:hover {
+    background: var(--primary);
+}
+
+header.main-header .header-items .profile .arrow {
+    display: inline-block;
+    font-size: 1.4rem;
+    transform: translateY(.4rem);
+}
+
+/* header.main-header .header-items .profile .circle {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    background: #ccc;
+    color: var(--color-variant-1);
+    cursor:pointer;
+    transition: .2s;
+} */
+
+header.main-header .header-items .profile .circle:hover {
+    background: var(--color-variant-2);
+}
+
+header.main-header .mobile-menu-toggle {
+    display: none;
+    z-index: 1000;
+    font-size: 3rem;
+    cursor: pointer;
+    color: var(--color-variant-1);
+}
+
+@media(max-width:767px) {
+    header.main-header .mobile-menu-toggle {
+        display: block;
+    }
+
+    header.main-header .right {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.35);
+        transform: translateX(-400rem);
+        transition: .3s;
+    }
+
+    header.main-header .right.active {
+        transform: translateX(0);
+    }
+
+    header.main-header .right .header-items {
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 22rem;
+        height: 100%;
+        background: var(--color-variant-2);
+        box-shadow: var(--shadow);
+    }
+    
+}
+
+@media (max-width: 520px) {
+    header.main-header .search-todo {
+        max-width: 15rem;
+        min-width: 100%;
+    }
+}
+
+@media(max-width:380px) {
+    header.main-header .search-todo {
+        max-width: 10rem;
+    }
+
+    header.main-header .search-todo .search-todo-input, 
+    header.main-header .search-todo .search-todo-button {
+        font-size: 1.3rem;
+    }
+}
