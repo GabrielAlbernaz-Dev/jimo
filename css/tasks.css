@@ -195,7 +195,8 @@
 }
 
 /* Modal */
-.modal-edit {
+.modal-edit,
+.modal-delete {
     position:fixed;
     z-index: 999;
     top:0;
@@ -224,20 +225,23 @@
     transition: .2s;
 }
 
-.modal-edit.open {
+.modal-edit.open,
+.modal-delete.open {
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
             transform: translateX(0);
 }
 
-.modal-edit .modal-edit-content {
+.modal-edit .modal-edit-content,
+.modal-delete .modal-delete-content {
     padding: 2rem 3rem;
     border-radius: var(--radius);
     background: var(--primary);
     margin: 0 1rem;
 }
 
-.modal-edit .modal-edit-content form {
+.modal-edit .modal-edit-content form,
+.modal-edit .modal-delete-content form {
     min-width: 26rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -252,7 +256,8 @@
             align-items: center;
 }
 
-.modal-edit .modal-edit-content form > * {
+.modal-edit .modal-edit-content form > *,
+.modal-delete .modal-delete-content form > * {
     font-size: 1.6rem;
     width: 100%;
     padding: 1rem;
@@ -260,13 +265,15 @@
     border:none;
 }
 
-.modal-edit .modal-edit-content form input:focus {
+.modal-edit .modal-edit-content form input:focus,
+.modal-edit .modal-delete-content form input:focus {
     outline: none;
     -webkit-box-shadow: var(--shadow);
             box-shadow: var(--shadow);
 }
 
-.modal-edit .modal-edit-content form button {
+.modal-edit .modal-edit-content form button,
+.modal-delete .modal-delete-content form button {
     font-weight: 600;
     cursor: pointer;
     background: #000;
@@ -276,7 +283,13 @@
     transition: .2s;
 }
 
-.modal-edit .modal-edit-content form button:hover {
+.modal-delete .modal-delete-content form button {
+    width:100%;
+    background:var(--danger);
+}
+
+.modal-edit .modal-edit-content form button:hover,
+.modal-delete .modal-delete-content form button:hover {
     -webkit-box-shadow: var(--shadow);
             box-shadow: var(--shadow);
 }

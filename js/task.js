@@ -1,24 +1,13 @@
-export default function initTask(app) {
+export default function initTask(app,appendTasks,eventsTasks,doneTaskFn) {
     if (app) {
         // Elements
         const inputTask = document.querySelector('.input-add-task');
         const submitTask = document.querySelector('.submit-task');
         const inputInvalidMsg = document.querySelector('.invalid-input-task');
         const filterTaskBtns = document.querySelectorAll('.filters-task .filter-item');
-        const orderByDescBtn = document.querySelector('.header-tasks .desc');
-        const orderByAscBtn = document.querySelector('.header-tasks .asc');
         const markInputs = document.querySelectorAll('.task .mark input');
-        const formTask = document.getElementById('form-task');
-        const defaultAction = formTask.action;
-        let paramsList = new Set();
-        let params = null;
-
-
-        function changeActionHref(params) {
-            const newParams = '?' + params;
-            const newAction = params ? defaultAction + newParams : defaultAction;
-            formTask.action = newAction;
-        }
+        const searchInput = document.querySelector('.search-todo-input');
+        const searchTodoBtn = document.querySelector('.search-todo-button');
 
         function checkInputTask(e) {
             if (inputTask.value.length === 0) {
@@ -26,61 +15,61 @@ export default function initTask(app) {
                 e.preventDefault();
             }
         }
-
-        function changeUrlOrder(text1, text2) {
-            const windowHref = window.location.href;
-            if (!windowHref.includes('order_by') && windowHref.includes('query')) {
-                const urlSplited = windowHref.split('&');
-                window.location.href = urlSplited[0] + text1;
-            } else if (windowHref.includes('order_by') && windowHref.includes('query')) {
-                const orderIndex = windowHref.indexOf('order_by');
-                const oldUrl = window.location.href.slice(0,orderIndex);
-                window.location.href = oldUrl + text1.replace('&','');
-            } else {
-                const oldUrl = windowHref.includes('?') ? windowHref.split('=')[0].replace('?','') : windowHref;
-                window.location.href = oldUrl + text2;
-            }
-        }
-
-        filterTaskBtns.forEach(btn => {
-            const queryParam = btn.dataset.query;
-            btn.addEventListener('click', ({ currentTarget }) => {
-                currentTarget.classList.toggle('active');
-                if (btn.classList.contains('active')) {
-                    paramsList.add(queryParam);
-                    const paramsArr = Array.from(paramsList);
-                    params = paramsArr.join('&');
-                } else {
-                    paramsList.delete(queryParam);
-                    const paramsArr = Array.from(paramsList);
-                    params = paramsArr.join('&');
-                }
-                changeActionHref(params);
-            })
-        })
-
         submitTask.addEventListener('click', checkInputTask);
 
-        orderByDescBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            changeUrlOrder('&order_by=DESC', '?=order_by=DESC')
-        })
-
-        orderByAscBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            changeUrlOrder('&order_by=ASC', '?=order_by=ASC')
-        })
+        filterTaskBtns.forEach(btn => {
+            btn.addEventListener('click', ({ currentTarget }) => {
+                const inputBtn = btn.querySelector('input[type="hidden"]');
+                currentTarget.classList.toggle('active');
+                if (btn.classList.contains('active')) inputBtn.value = 1; 
+                else inputBtn.value = 0;
+            })
+        });
 
         markInputs.forEach(input => {
             input.addEventListener('change',({currentTarget})=>{
                 const parent = currentTarget.closest('.left');
                 const taskText  = parent.querySelector('.task-name');
+                const id = currentTarget.closest('li.task').dataset.id;
                 if(currentTarget.checked) {
                    taskText.classList.add('text-done');
+                   currentTarget.value = 1;
                 } else {
                     taskText.classList.remove('text-done');
+                    currentTarget.value = 0;
                 }
-            })
-        })
+                doneTaskFn('/jimo/doneTask',id,currentTarget.value);
+            });
+        });
+
+        //Search
+        searchTodoBtn.addEventListener('click', (e)=>{
+            window.location.href = `${window.location.origin}/jimo/app?search=${searchInput.value}`
+        });
+
+        async function searchTasksAjax(url,data) {
+            const tasksContainer = document.querySelector('.task-wrapper .tasks');
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: data
+            });
+           const responseData = await response.json();
+           //Add Tasks to container
+           appendTasks(tasksContainer,responseData);
+           //Events after ajax
+           eventsTasks(doneTaskFn);
+        }
+        
+        window.addEventListener('load', ()=>{
+            const params = new URLSearchParams(new URL(window.location.href).search);
+            const searchData = params.get("search");
+            if(params.has('search')) {
+                searchTasksAjax(`${window.location.origin}/jimo/searchTask`,searchData)
+            }
+        });
+
     }
 }

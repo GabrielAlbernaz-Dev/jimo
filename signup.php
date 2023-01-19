@@ -1,19 +1,21 @@
-<?php include_once 'inc/scripts/verifyLogin.php' ?>
 <?php 
-    include_once 'bin/connection.php';
     include_once 'inc/layout/header-noauth.php';
+    require './Controllers/UserController.php';
+    require './helpers/Auth.php';
+    Auth::isLogin();
+?>
+<?php 
+    $formData = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    $userRegister = new UserController();
 
-    if(isset($_POST['submit-user'])) {
-        $email = mysqli_real_escape_string($conn,$_POST['email']);
-        $password = mysqli_real_escape_string($conn,$_POST['password']);
-        $name = mysqli_real_escape_string($conn,$_POST['name']);
-        $hash = password_hash($password,PASSWORD_DEFAULT);
-        $table = USERS_TABLE;
-        
-        $sql = "INSERT INTO $table (email,password,name) VALUES ('$email', '$hash', '$name')";
-        $exec = mysqli_query($conn,$sql);
+    if(isset($formData['submit-user'])) {
+        extract($formData);
+        $userRegister->email = $email;
+        $userRegister->password = $password;
+        $userRegister->name = $name;
+        // var_dump($userRegister);
+        $userRegister->register();
     }
-
 ?>
     <main class="form-container">
         <div class="content">

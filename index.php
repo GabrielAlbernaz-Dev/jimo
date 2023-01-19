@@ -1,5 +1,8 @@
-<?php include_once 'inc/scripts/verifyLogin.php' ?>
-<?php include_once 'inc/layout/header-noauth.php' ?>
+<?php 
+    include_once 'inc/layout/header-noauth.php';
+    require './helpers/Auth.php';
+    Auth::isLogin(); 
+?>
     <main class="form-container">
         <div class="content">
             <div class="desc pdx-4">

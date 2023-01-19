@@ -1,4 +1,4 @@
-export default function initMenu(app) {
+export default function initMenu(app,appendTasks,eventsTasks,doneTaskFn) {
     //Mobile Menu
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const rightHeaderItem = document.querySelector('.main-header .right');
@@ -15,22 +15,43 @@ export default function initMenu(app) {
         const asideNavLinks = asideNav.querySelectorAll('.nav li a');
         const asideMenuToggle = asideNav.querySelector('.toggle-nav');
         const headerTasksTitle = document.querySelector('.header-tasks .info-text');
-        const currentUrl = window.location.href;
-        const queryIndex = currentUrl.indexOf('query');
-        const queryText = currentUrl.slice(queryIndex).trim();
 
         function handleAsideMenu() {
             app.classList.toggle('side-disabled');
         }
-
         asideMenuToggle.addEventListener('click',handleAsideMenu);
 
+        function removeAllActives() {
+            asideNavLinks.forEach(link => link.classList.remove('active'));
+        }
+
+        async function tasksAjax(url,data) {
+            const tasksContainer = document.querySelector('.task-wrapper .tasks');
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: data
+            });
+           const responseData = await response.json();
+           //Add Tasks to container
+           appendTasks(tasksContainer,responseData);
+           //Events after ajax
+           eventsTasks(doneTaskFn);
+        }
+
+
         asideNavLinks.forEach(link => {
-            const dataQuery = link.dataset.query.trim();
-            const dataText = link.dataset.text.trim();
-            if(dataQuery === queryText) link.classList.add('active');
-            if(link.classList.contains('active')) headerTasksTitle.innerText = dataText;
-        })
+            link.addEventListener('click', (e)=>{
+                e.preventDefault();
+                const {currentTarget} = e;
+                tasksAjax('/jimo/tasks',currentTarget.dataset.filter);
+                removeAllActives();
+                currentTarget.classList.add('active');
+                headerTasksTitle.innerText = currentTarget.innerText;
+            });
+        });
 
         //Profile
         const profileToggle = document.querySelector('.main-header .profile');

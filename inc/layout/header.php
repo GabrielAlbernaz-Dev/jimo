@@ -1,3 +1,7 @@
+<?php 
+    // require './helpers/Auth.php';
+    // Auth::checkAccess();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +20,7 @@
         </div>
         <div class="center">
             <div class="search-todo">
-                <input class="search-todo-input" type="text" placeholder="Search a task...">
+                <input class="search-todo-input" name="searchTask" type="text" placeholder="Search a task...">
                 <button class="search-todo-button">
                     <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </button>

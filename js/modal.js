@@ -3,14 +3,21 @@ export default function initModal(app) {
         // Modal Edit
         const taskEditBtns = document.querySelectorAll('.task-edit');
         const modalEdit = document.querySelector('.modal-edit');
+        const modalDelete = document.querySelector('.modal-delete');
+        const inputTaskEdit = document.querySelector('#taskIdEdit');
+        const inputTaskDelete = document.querySelector('#taskIdDelete');
+        const deletedTaskBtns = document.querySelectorAll('.tasks .task-delete');
+
+        // document.querySelector('.edit-form').onsubmit = (e)=>{
+        //     e.preventDefault();
+        // }
 
         function handleModalEdit(e) {
+            e.preventDefault();
             const {currentTarget} = e;
-            console.log(currentTarget);
-            const taskId = currentTarget.closest('li').dataset.id;
-            const editForm = modalEdit.querySelector('.edit-form');
+            const taskId = currentTarget.dataset.id;
+            inputTaskEdit.value = taskId;
             modalEdit.classList.toggle('open');
-            editForm.action = `editTask.php?edit_task=${taskId}`;
         }
 
         taskEditBtns.forEach((btn) => {
@@ -19,11 +26,29 @@ export default function initModal(app) {
 
         modalEdit.addEventListener('click', (e)=>{
             e.stopPropagation();
-            const {target} = e;
-            if(target.classList.contains('open')) {
+            const {target,currentTarget} = e;
+            if(target === currentTarget) {
                 target.classList.toggle('open');
-            } else {
-                return
+            }
+        });
+
+        //Delete Task
+        function handleModalDelete(e) {
+            const {currentTarget} = e;
+            const taskId = currentTarget.dataset.id;
+            inputTaskDelete.value = taskId;
+            modalDelete.classList.toggle('open');
+        }
+
+        deletedTaskBtns.forEach(btn => {
+            btn.addEventListener('click',handleModalDelete);
+        });
+
+        modalDelete.addEventListener('click', (e)=>{
+            e.stopPropagation();
+            const {target,currentTarget} = e;
+            if(target === currentTarget) {
+                target.classList.toggle('open');
             }
         });
     } 

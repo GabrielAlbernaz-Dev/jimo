@@ -1,5 +1,5 @@
 <?php 
-    session_start();
-    unset($_SESSION['auth']);
-    header('Location: index.php');
+    require './Controllers/UserController.php';
+    $userLogout = new UserController();
+    $userLogout->logout();
 ?>
