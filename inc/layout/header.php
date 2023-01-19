@@ -1,7 +1,3 @@
-<?php 
-    // require './helpers/Auth.php';
-    // Auth::checkAccess();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
