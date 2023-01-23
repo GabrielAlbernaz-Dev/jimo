@@ -20,7 +20,9 @@
 The project is still under development and the next updates will focus on the following tasks:
 
 - [ ] Create a task sorting feature
+- [ ] Add a documentation
 - [ ] Create new functionalities for the user profile
+- [ ] Deploy the project for example
 
 ## 💻 Requirements
 
