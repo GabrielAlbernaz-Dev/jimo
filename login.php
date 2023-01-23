@@ -6,5 +6,5 @@
         extract($formData);
         $userAuth->email = $email;
         $userAuth->password = $password;
-        var_dump($userAuth->login());
+        $userAuth->login();
     }
