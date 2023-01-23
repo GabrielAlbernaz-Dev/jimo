@@ -26,9 +26,9 @@ The project is still under development and the next updates will focus on the fo
 
 Before you begin, make sure you have met the following requirements:
 <!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
-* You need to install git on your machine`
+* You need to install git on your machine
 
-## 🚀 InstalL Jimo
+## 🚀 Install Jimo
 
 To install the Jimo, follow these steps:
 
